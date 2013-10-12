@@ -1,0 +1,5 @@
+hazzard_curso:
+    resource: "@HazzardCursoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
