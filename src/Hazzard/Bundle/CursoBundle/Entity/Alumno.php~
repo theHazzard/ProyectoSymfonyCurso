@@ -2,6 +2,7 @@
 
 namespace Hazzard\Bundle\CursoBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Hazzard\Bundle\CursoBundle\Entity\AlumnoRepository")
  */
-class Alumno
+class Alumno 
 {
     /**
      * @var integer
@@ -41,13 +42,27 @@ class Alumno
      * @ORM\Column(name="dni", type="integer")
      */
     private $dni;
-
+    
     /**
+     * @var string
+     * 
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
+    
+     /**
+     * @var string
+     * 
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+     private $salt;
+
+     /**
      * 
      * @ORM\ManyToMany(targetEntity="Materia", inversedBy="alumnos")
      * JoinTable(name="cursos_alumno",
      *      joinColumns={@JoinColumn(name="alumno_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="curso_id", referencedColumnName="id")}
+     *      inverseJoinColumns={@JoinColumn(name="curso_id", referencedColumnName="id", nullable=true)}
      *      )
      */
     private $cursos;
@@ -169,5 +184,20 @@ class Alumno
     public function getCursos()
     {
         return $this->cursos;
+    }
+    
+    public function __toString() {
+        return $this->apellido . ', ' . $this->nombre;
+    }
+    
+    function eraseCredentials() {        
+    }
+    
+    function getRoles() {
+        return array('ROLE_USUARIO');
+    }
+    
+    function getUsername() {
+        return $this->getDni();
     }
 }

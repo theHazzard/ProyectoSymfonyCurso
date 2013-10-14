@@ -33,6 +33,12 @@ class Curso
      * @ORM\ManyToMany(targetEntity="Alumno", mappedBy="cursos")
      */
     private $alumnos;
+    
+    /**
+     * 
+     * @ORM\ManyToOne(targetEntity="Materia", cascade={"all"}, fetch="EAGER")
+     */
+    private $materia;
 
     /**
      * Get id
@@ -105,5 +111,28 @@ class Curso
     public function getAlumnos()
     {
         return $this->alumnos;
+    }
+
+    /**
+     * Set materia
+     *
+     * @param \Hazzard\Bundle\CursoBundle\Entity\Materia $materia
+     * @return Curso
+     */
+    public function setMateria(\Hazzard\Bundle\CursoBundle\Entity\Materia $materia = null)
+    {
+        $this->materia = $materia;
+    
+        return $this;
+    }
+
+    /**
+     * Get materia
+     *
+     * @return \Hazzard\Bundle\CursoBundle\Entity\Materia 
+     */
+    public function getMateria()
+    {
+        return $this->materia;
     }
 }

@@ -2,4 +2,10 @@ hazzard_curso:
     resource: "@HazzardCursoBundle/Controller/"
     type:     annotation
     prefix:   /
+    
+alumno_login_check:
+    pattern: /alumno/login_check
+    
+alumno_logout:
+    pattern: /logout
 

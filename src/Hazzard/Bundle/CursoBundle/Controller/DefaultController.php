@@ -9,11 +9,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+    * @Route("/", name="home")
+    * @Template()
+    */
+    public function indexAction()
+    {
+        return $this->render('HazzardCursoBundle:Default:index.html.twig');
+    }
+    
+    /**
+     * 
+     * @Route("/about")
      * @Template()
      */
-    public function indexAction($name)
+    public function aboutAction()
     {
-        return array('name' => $name);
+        return $this->render('HazzardCursoBundle:Default:about.html.twig');
     }
 }
