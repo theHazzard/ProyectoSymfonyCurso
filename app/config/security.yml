@@ -7,6 +7,8 @@ security:
           form_login: 
             login_path: /alumno/login
             check_path: /alumno/login_check
+          logout:
+            path: /alumno/logout
     access_control:
         - { path: ^/alumno/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/alumno/registrar, roles: IS_AUTHENTICATED_ANONYMOUSLY }

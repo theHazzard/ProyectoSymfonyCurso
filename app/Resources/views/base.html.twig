@@ -83,18 +83,39 @@
         <div class="container">
             <div class="header">
               <ul class="nav nav-pills pull-right">
-                <li class="active">
-                  <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/curso/">Cursos</a>
-                </li>
-                <li>
-                  <a href="/sitio/about">Sobre</a>
-                </li>
-                <li>
-                  <a href="/sitio/contacto">Contacto</a><a></a>
-                </li>
+                {% if is_granted('ROLE_USUARIO') %}
+                    <li class="active">
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/curso/">Cursos</a>
+                    </li>
+                    <li>
+                        <a href="/sitio/about">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="/sitio/contacto">Contacto</a>
+                    </li>
+                    <li>
+                        <a href="/alumno/logout">Salir</a>
+                    </li>
+                {% else %}
+                    <li class="active">
+                      <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/alumno/login">Ingresar</a>
+                    </li>
+                    <li>
+                        <a href="/alumno/registrar">Registrarse</a>
+                    </li>
+                    <li>
+                      <a href="/sitio/about">Sobre</a>
+                    </li>
+                    <li>
+                      <a href="/sitio/contacto">Contacto</a>
+                    </li>
+                {% endif %}
               </ul>
               <h3 class="text-muted">Cursox</h3>
             </div>
