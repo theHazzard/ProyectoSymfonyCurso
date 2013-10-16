@@ -11,6 +11,10 @@ security:
         - { path: ^/alumno/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/alumno/registrar, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/alumno/*, roles: ROLE_USUARIO }
+        - { path: ^/materia/*, roles: ROLE_USUARIO }
+        - { path: ^/curso/*, roles: ROLE_USUARIO }
+
+
     providers:
         alumnos:
             entity: { class: Hazzard\Bundle\CursoBundle\Entity\Alumno, property: dni }

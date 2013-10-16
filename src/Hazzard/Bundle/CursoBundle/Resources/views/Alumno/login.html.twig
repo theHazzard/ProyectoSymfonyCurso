@@ -1,16 +1,31 @@
 {# src/Cupon/UsuarioBunle/Resources/views/Default/login.html.twig #}
 {% extends '::base.html.twig' %}
 {% block title %}Login{% endblock %}
+{% block stylesheets %}
+    <style type="text/css">
+      .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+      }
+    </style>
+{% endblock %}
+      
 {% block body %}
-    {% if error %}
-        <div>{{ error.message }}</div>
-    {% endif %}
-    <form action="{{ path('alumno_login_check') }}" method="post">
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="_username"
-        value="{{ last_username }}" />
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="_password" />
-        <input type="submit" name="login" value="Acceder" />
-    </form>
+    <div class="container">
+        
+
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+        {% endfor %}
+
+        <form class="form-signin" role="form" action="{{ path('alumno_login_check') }}" method="post">
+            <h1 class="form-signin-heading">{{ block('title') }}</h1>
+            <input type="text" id="username" class="form-control" name="_username" value="{{ last_username }}" placeholder="Documento" />
+            <input type="password" id="password" class="form-control" name="_password" placeholder="Password"/>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Acceder!</button>
+        </form>
+    </div>
 {% endblock %}
